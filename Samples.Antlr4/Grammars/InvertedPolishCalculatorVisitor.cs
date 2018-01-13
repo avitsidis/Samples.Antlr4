@@ -38,11 +38,11 @@ public interface IInvertedPolishCalculatorVisitor<Result> : IParseTreeVisitor<Re
 	/// <return>The visitor result.</return>
 	Result VisitInput([NotNull] InvertedPolishCalculatorParser.InputContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.addOrMinus"/>.
+	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operation"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context);
+	Result VisitOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.expression"/>.
 	/// </summary>

@@ -41,15 +41,15 @@ public interface IInvertedPolishCalculatorListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitInput([NotNull] InvertedPolishCalculatorParser.InputContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.addOrMinus"/>.
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.operation"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context);
+	void EnterOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.addOrMinus"/>.
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operation"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context);
+	void ExitOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.expression"/>.
 	/// </summary>

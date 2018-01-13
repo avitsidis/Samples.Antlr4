@@ -47,17 +47,17 @@ public partial class InvertedPolishCalculatorBaseListener : IInvertedPolishCalcu
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInput([NotNull] InvertedPolishCalculatorParser.InputContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.addOrMinus"/>.
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.operation"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context) { }
+	public virtual void EnterOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.addOrMinus"/>.
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operation"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context) { }
+	public virtual void ExitOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>

@@ -10,8 +10,8 @@ namespace Samples.Antlr4
         {
             {"+", (a,b) => a+b },
             {"-", (a,b) => a-b },
-            {"*", (a,b) => a+b },
-            {"/", (a,b) => a+b }
+            {"*", (a,b) => a*b },
+            {"/", (a,b) => a/b }
         };
 
         public override decimal VisitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context)
@@ -19,19 +19,16 @@ namespace Samples.Antlr4
             return decimal.Parse(context.NUMBER().GetText());
         }
 
-
-
-
         public override decimal VisitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context)
         {
             if (context.number() != null)
             {
                 return VisitNumber(context.number());
             }
-            return VisitAddOrMinus(context.addOrMinus());
+            return VisitOperation(context.operation());
         }
 
-        public override decimal VisitAddOrMinus([NotNull] InvertedPolishCalculatorParser.AddOrMinusContext context)
+        public override decimal VisitOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context)
         {
             var op = context.OPERATOR().GetText();
             return operations[op](VisitNumber(context.number()), VisitExpression(context.expression()));

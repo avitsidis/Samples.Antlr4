@@ -35,6 +35,30 @@ namespace Samples.Antlr4.Tests
                 Assert.Equal(expectedResult, result);
             }
 
+            [Fact]
+            public void Can_Compute_Multiplication()
+            {
+                //Arrange
+                var calculator = new InvertedPolishCalculator();
+                var expectedResult = 10;
+                //Act
+                var result = calculator.Compute("2 5 *");
+                //Assert
+                Assert.Equal(expectedResult, result);
+            }
+
+            [Fact]
+            public void Can_Compute_Division()
+            {
+                //Arrange
+                var calculator = new InvertedPolishCalculator();
+                var expectedResult = 5;
+                //Act
+                var result = calculator.Compute("10 2 /");
+                //Assert
+                Assert.Equal(expectedResult, result);
+            }
+
 
             [Fact]
             public void Can_compute_nested_additions()

@@ -4,14 +4,14 @@ grammar InvertedPolishCalculator;
  * Parser Rules
  */
  input
-	: addOrMinus;
+	: operation;
 
-addOrMinus
+operation
 	: number expression OPERATOR
 	;
 
 expression
-	: addOrMinus
+	: operation
 	| number
 	;
 
@@ -23,6 +23,8 @@ fragment DIGIT : [0-9] ;
 NUMBER: DIGIT+ ([.] DIGIT+)? ;
 FIRST_NUMBER: NUMBER;
 SECOND_NUMBER: NUMBER;
-OPERATOR: PLUS | MINUS;	
+OPERATOR: PLUS | MINUS | MUL | DIV;	
 PLUS: '+';
 MINUS: '-';
+MUL: '*';
+DIV: '/';

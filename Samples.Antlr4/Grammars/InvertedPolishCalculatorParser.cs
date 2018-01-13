@@ -36,18 +36,20 @@ public partial class InvertedPolishCalculatorParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		NUMBER=1, FIRST_NUMBER=2, SECOND_NUMBER=3, OPERATOR=4, PLUS=5, MINUS=6;
+		NUMBER=1, FIRST_NUMBER=2, SECOND_NUMBER=3, OPERATOR=4, PLUS=5, MINUS=6, 
+		MUL=7, DIV=8;
 	public const int
-		RULE_input = 0, RULE_addOrMinus = 1, RULE_expression = 2, RULE_number = 3;
+		RULE_input = 0, RULE_operation = 1, RULE_expression = 2, RULE_number = 3;
 	public static readonly string[] ruleNames = {
-		"input", "addOrMinus", "expression", "number"
+		"input", "operation", "expression", "number"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, null, null, null, "'+'", "'-'"
+		null, null, null, null, null, "'+'", "'-'", "'*'", "'/'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "NUMBER", "FIRST_NUMBER", "SECOND_NUMBER", "OPERATOR", "PLUS", "MINUS"
+		null, "NUMBER", "FIRST_NUMBER", "SECOND_NUMBER", "OPERATOR", "PLUS", "MINUS", 
+		"MUL", "DIV"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -81,8 +83,8 @@ public partial class InvertedPolishCalculatorParser : Parser {
 		Interpreter = new ParserATNSimulator(this, _ATN, decisionToDFA, sharedContextCache);
 	}
 	public partial class InputContext : ParserRuleContext {
-		public AddOrMinusContext addOrMinus() {
-			return GetRuleContext<AddOrMinusContext>(0);
+		public OperationContext operation() {
+			return GetRuleContext<OperationContext>(0);
 		}
 		public InputContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -111,7 +113,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 8; addOrMinus();
+			State = 8; operation();
 			}
 		}
 		catch (RecognitionException re) {
@@ -125,7 +127,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 		return _localctx;
 	}
 
-	public partial class AddOrMinusContext : ParserRuleContext {
+	public partial class OperationContext : ParserRuleContext {
 		public NumberContext number() {
 			return GetRuleContext<NumberContext>(0);
 		}
@@ -133,30 +135,30 @@ public partial class InvertedPolishCalculatorParser : Parser {
 			return GetRuleContext<ExpressionContext>(0);
 		}
 		public ITerminalNode OPERATOR() { return GetToken(InvertedPolishCalculatorParser.OPERATOR, 0); }
-		public AddOrMinusContext(ParserRuleContext parent, int invokingState)
+		public OperationContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_addOrMinus; } }
+		public override int RuleIndex { get { return RULE_operation; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			IInvertedPolishCalculatorListener typedListener = listener as IInvertedPolishCalculatorListener;
-			if (typedListener != null) typedListener.EnterAddOrMinus(this);
+			if (typedListener != null) typedListener.EnterOperation(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			IInvertedPolishCalculatorListener typedListener = listener as IInvertedPolishCalculatorListener;
-			if (typedListener != null) typedListener.ExitAddOrMinus(this);
+			if (typedListener != null) typedListener.ExitOperation(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IInvertedPolishCalculatorVisitor<TResult> typedVisitor = visitor as IInvertedPolishCalculatorVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitAddOrMinus(this);
+			if (typedVisitor != null) return typedVisitor.VisitOperation(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public AddOrMinusContext addOrMinus() {
-		AddOrMinusContext _localctx = new AddOrMinusContext(Context, State);
-		EnterRule(_localctx, 2, RULE_addOrMinus);
+	public OperationContext operation() {
+		OperationContext _localctx = new OperationContext(Context, State);
+		EnterRule(_localctx, 2, RULE_operation);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
@@ -177,8 +179,8 @@ public partial class InvertedPolishCalculatorParser : Parser {
 	}
 
 	public partial class ExpressionContext : ParserRuleContext {
-		public AddOrMinusContext addOrMinus() {
-			return GetRuleContext<AddOrMinusContext>(0);
+		public OperationContext operation() {
+			return GetRuleContext<OperationContext>(0);
 		}
 		public NumberContext number() {
 			return GetRuleContext<NumberContext>(0);
@@ -214,7 +216,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 14; addOrMinus();
+				State = 14; operation();
 				}
 				break;
 			case 2:
@@ -281,7 +283,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\b', '\x17', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\x5964', '\x3', '\n', '\x17', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x3', 
 		'\x2', '\x3', '\x2', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', 
 		'\x3', '\x3', '\x4', '\x3', '\x4', '\x5', '\x4', '\x13', '\n', '\x4', 

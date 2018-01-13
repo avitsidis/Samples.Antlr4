@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.7.1.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.7.1.1\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Grammars\InvertedPolishCalculatorBaseListener.cs" />
+    <Compile Include="Grammars\InvertedPolishCalculatorBaseVisitor.cs" />
+    <Compile Include="Grammars\InvertedPolishCalculatorLexer.cs" />
+    <Compile Include="Grammars\InvertedPolishCalculatorListener.cs" />
+    <Compile Include="Grammars\InvertedPolishCalculatorParser.cs" />
+    <Compile Include="Grammars\InvertedPolishCalculatorVisitor.cs" />
+    <Compile Include="InvertedPolishCalculator.cs" />
+    <Compile Include="InvertedPolishCalculatorComputeVisitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Grammars\InvertedPolishCalculator.g4" />
+    <None Include="Grammars\InvertedPolishCalculator.interp" />
+    <None Include="Grammars\InvertedPolishCalculator.tokens" />
+    <None Include="Grammars\InvertedPolishCalculatorLexer.interp" />
+    <None Include="Grammars\InvertedPolishCalculatorLexer.tokens" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>java -jar "$(SolutionDir)\libs\antlr-4.7.1-complete.jar" -Dlanguage=CSharp -visitor "$(ProjectDir)\Grammars\InvertedPolishCalculator.g4"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

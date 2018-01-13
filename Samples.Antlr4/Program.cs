@@ -10,6 +10,7 @@ namespace Samples.Antlr4
     {
         static void Main(string[] args)
         {
+            
         }
     }
 }

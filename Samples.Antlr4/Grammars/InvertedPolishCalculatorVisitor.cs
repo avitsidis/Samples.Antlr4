@@ -50,9 +50,21 @@ public interface IInvertedPolishCalculatorVisitor<Result> : IParseTreeVisitor<Re
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.number"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context);
 }

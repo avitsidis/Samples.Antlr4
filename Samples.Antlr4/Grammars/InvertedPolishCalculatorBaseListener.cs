@@ -71,6 +71,18 @@ public partial class InvertedPolishCalculatorBaseListener : IInvertedPolishCalcu
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.number"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -82,6 +94,18 @@ public partial class InvertedPolishCalculatorBaseListener : IInvertedPolishCalcu
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

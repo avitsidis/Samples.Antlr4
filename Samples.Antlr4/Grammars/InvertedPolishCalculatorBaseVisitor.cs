@@ -64,6 +64,16 @@ public partial class InvertedPolishCalculatorBaseVisitor<Result> : AbstractParse
 	/// <return>The visitor result.</return>
 	public virtual Result VisitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.number"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -73,4 +83,14 @@ public partial class InvertedPolishCalculatorBaseVisitor<Result> : AbstractParse
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context) { return VisitChildren(context); }
 }

@@ -61,6 +61,16 @@ public interface IInvertedPolishCalculatorListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.operande"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.number"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -70,4 +80,14 @@ public interface IInvertedPolishCalculatorListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="InvertedPolishCalculatorParser.negative"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context);
 }

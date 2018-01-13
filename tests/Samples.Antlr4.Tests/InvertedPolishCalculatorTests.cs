@@ -65,9 +65,39 @@ namespace Samples.Antlr4.Tests
             {
                 //Arrange
                 var calculator = new InvertedPolishCalculator();
-                //Act & Assert
+                var expectedResult = 3;
+                //Act
                 var result = calculator.Compute("1 1 1 + +");
+                //Assert
+                Assert.Equal(expectedResult, result);
             }
+
+
+            [Fact]
+            public void Can_compute_Negative_numbers()
+            {
+                //Arrange
+                var calculator = new InvertedPolishCalculator();
+                var expectedResult = -2;
+                //Act
+                var result = calculator.Compute("-1 2 *");
+                //Assert
+                Assert.Equal(expectedResult, result);
+            }
+
+
+            [Fact]
+            public void Can_compute_Negative_numbers_as_second_operande()
+            {
+                //Arrange
+                var calculator = new InvertedPolishCalculator();
+                var expectedResult = -2;
+                //Act
+                var result = calculator.Compute("1 -2 *");
+                //Assert
+                Assert.Equal(expectedResult, result);
+            }
+
         }
     }
 }

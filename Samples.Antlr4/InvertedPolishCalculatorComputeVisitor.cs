@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Antlr4.Runtime.Misc;
+using Antlr4.Runtime.Tree;
 
 namespace Samples.Antlr4
 {
@@ -14,16 +15,35 @@ namespace Samples.Antlr4
             {"/", (a,b) => a/b }
         };
 
+        private decimal ParseContext(IParseTree tree)
+        {
+            return decimal.Parse(tree.GetText());
+        }
+
         public override decimal VisitNumber([NotNull] InvertedPolishCalculatorParser.NumberContext context)
         {
-            return decimal.Parse(context.NUMBER().GetText());
+            return ParseContext(context.NUMBER());
+        }
+
+        public override decimal VisitNegative([NotNull] InvertedPolishCalculatorParser.NegativeContext context)
+        {
+            return ParseContext(context.NEGATIVE_NUMBER());
+        }
+
+        public override decimal VisitOperande([NotNull] InvertedPolishCalculatorParser.OperandeContext context)
+        {
+            if(context.negative() != null)
+            {
+                return VisitNegative(context.negative());
+            }
+            return VisitNumber(context.number());
         }
 
         public override decimal VisitExpression([NotNull] InvertedPolishCalculatorParser.ExpressionContext context)
         {
-            if (context.number() != null)
+            if (context.operande() != null)
             {
-                return VisitNumber(context.number());
+                return VisitOperande(context.operande());
             }
             return VisitOperation(context.operation());
         }
@@ -31,7 +51,7 @@ namespace Samples.Antlr4
         public override decimal VisitOperation([NotNull] InvertedPolishCalculatorParser.OperationContext context)
         {
             var op = context.OPERATOR().GetText();
-            return operations[op](VisitNumber(context.number()), VisitExpression(context.expression()));
+            return operations[op](VisitOperande(context.operande()), VisitExpression(context.expression()));
         }
 
     }

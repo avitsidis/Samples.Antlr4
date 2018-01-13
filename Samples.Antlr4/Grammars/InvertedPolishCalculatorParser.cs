@@ -37,7 +37,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
 		NUMBER=1, NEGATIVE_NUMBER=2, FIRST_NUMBER=3, SECOND_NUMBER=4, OPERATOR=5, 
-		PLUS=6, MINUS=7, MUL=8, DIV=9;
+		PLUS=6, MINUS=7, MUL=8, DIV=9, WS=10;
 	public const int
 		RULE_input = 0, RULE_operation = 1, RULE_expression = 2, RULE_operande = 3, 
 		RULE_number = 4, RULE_negative = 5;
@@ -50,7 +50,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "NUMBER", "NEGATIVE_NUMBER", "FIRST_NUMBER", "SECOND_NUMBER", "OPERATOR", 
-		"PLUS", "MINUS", "MUL", "DIV"
+		"PLUS", "MINUS", "MUL", "DIV", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -389,7 +389,7 @@ public partial class InvertedPolishCalculatorParser : Parser {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\v', '!', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', '\t', 
+		'\x5964', '\x3', '\f', '!', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', '\t', 
 		'\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', '\x6', 
 		'\t', '\x6', '\x4', '\a', '\t', '\a', '\x3', '\x2', '\x3', '\x2', '\x3', 
 		'\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x3', '\x4', '\x3', 

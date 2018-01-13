@@ -35,3 +35,4 @@ PLUS: '+';
 MINUS: '-';
 MUL: '*';
 DIV: '/';
+WS: [ \n\t\r]+ -> skip;
